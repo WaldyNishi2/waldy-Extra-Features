@@ -37,21 +37,22 @@ class evamaria(Client):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
+API_ID = int(environ.get('API_ID', '22217932'))
+API_HASH = environ.get('API_HASH', 'd722db74da63a9e46ba2dcba49c69a4c')
+BOT_TOKEN = environ.get('BOT_TOKEN', '6676126762:AAEqdO154Tj2ZzEto5k5ZTm0nTlrRbw_RK4')
+PORT = environ.get("PORT", "8080")
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False))
-PICS = (environ.get('PICS' ,'https://telegra.ph/file/3d87cdb638b5444198c59.jpg https://telegra.ph/file/2140af3c0cb1c848ef5a0.jpg https://telegra.ph/file/f5c3720b2ce9d1d97d59f.jpg https://telegra.ph/file/e67137996688342d75f1e.jpg')).split()
+PICS = (environ.get('PICS', 'https://telegra.ph/file/5553dc39f968b364d4856.jpg')).split()
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5566924646 1395772318').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001918389293').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
-auth_channel = environ.get('AUTH_CHANNEL')
+auth_channel = environ.get('AUTH_CHANNEL', '-1001962622157')
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
@@ -70,20 +71,21 @@ TG_MAX_SELECT_LEN = environ.get("TG_MAX_SELECT_LEN", "100")
 COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Harsha:harsha@waldysearchprvt.jsyxwtb.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "waldyfilesbot")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'waldyfilesbot')
 
 #Downloader
 DOWNLOAD_LOCATION = environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/AudioBoT/")
 
 # Others
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'TeamEvamaria')
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001896536431'))
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'Waldywritings_Bot')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
-SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "False")), False)
+SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), True)
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", None)
+AUTO_DELETE = is_enabled((environ.get('AUTO_DELETE', "True")), True)
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b>Query: {query}</b> \n‌IMDb Data:\n\n🏷 Title: <a href={url}>{title}</a>\n🎭 Genres: {genres}\n📆 Year: <a href={url}/releaseinfo>{year}</a>\n🌟 Rating: <a href={url}/ratings>{rating}</a> / 10")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
